@@ -30,7 +30,7 @@ const NavBar = ({ login, Path }) => {
                 {
                     login ?
 
-                        <h1 onClick={() => nav(`/home/${localStorage.getItem('Id')}`)} style={{ color: "darkred" }}>postAzon 🍚🐔🤟</h1>
+                        <h1 style={{ color: "darkred" }}>postAzon 🍚🐔🤟</h1>
 
                         :
                         <>
