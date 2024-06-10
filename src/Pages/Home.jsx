@@ -26,7 +26,7 @@ export const Home = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = () => {
 
-        axios.get("https://postazon-mern.onrender.com")
+        axios.get("https://postazonbackend.onrender.com")
             .then(async res => {
                 if (!res.data.Token) {
                     localStorage.clear()
@@ -46,7 +46,7 @@ export const Home = () => {
 
                     }
                     try {
-                        const response = await axios.get(`https://postazon-mern.onrender.com/allusers`)
+                        const response = await axios.get(`https://postazonbackend.onrender.com/allusers`)
                         setPath(response.data.AllUsers.find((v) => v._id === localStorage.getItem('Id')).dpfile)
                         setUsers(response.data.AllUsers)
                         localStorage.setItem('Path', path)
@@ -64,7 +64,7 @@ export const Home = () => {
     })
 
     const clkLikeUnlike = (postid) => {
-        axios.put(`https://postazon-mern.onrender.com/likeandunlike/${postid}`)
+        axios.put(`https://postazonbackend.onrender.com/likeandunlike/${postid}`)
             .then(res => {
                 if (res.data.msg === "Post Unliked") {
                     toast(res.data.msg)
@@ -84,7 +84,7 @@ export const Home = () => {
         if (usercomment.trim() === "") toast("Comment is empty")
         else {
             try {
-                const response = await axios.post(`https://postazon-mern.onrender.com/addcomment/${postid}`, { usercomment })
+                const response = await axios.post(`https://postazonbackend.onrender.com/addcomment/${postid}`, { usercomment })
                 toast(response.data.msg)
                 setusercomment("")
 
@@ -101,7 +101,7 @@ export const Home = () => {
         const commentid = idarray[1]
         console.log(typeof (commentid));
 
-        axios.put(`https://postazon-mern.onrender.com/deletecomment/${postid}`, { commentid })
+        axios.put(`https://postazonbackend.onrender.com/deletecomment/${postid}`, { commentid })
             .then(res => toast(res.data))
             .catch(er => console.log(er))
 
@@ -120,7 +120,7 @@ export const Home = () => {
             const commentId = idarray[1]
             console.log(typeof (commentId));
 
-            axios.put(`https://postazon-mern.onrender.com/editcomment/${postid}`, { commentId, updatedcomment })
+            axios.put(`https://postazonbackend.onrender.com/editcomment/${postid}`, { commentId, updatedcomment })
                 .then(res => {
                     toast(res.data.msg)
                     setEditcomment(false)

@@ -8,7 +8,7 @@ const NavBar = ({ login, Path }) => {
 
     const SignOut = () => {
         if (window.confirm("Sign Out ?")) {
-            axios.get("http://localhost:9000/logout")
+            axios.get("https://postazonbackend.onrender.com/logout")
                 .then(res => {
                     if (res.data.LoggedOut) {
                         localStorage.clear()

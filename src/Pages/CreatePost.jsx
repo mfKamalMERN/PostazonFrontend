@@ -17,7 +17,7 @@ export const CreatePost = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = () => {
 
-        axios.get("https://postazon-mern.onrender.com")
+        axios.get("https://postazonbackend.onrender.com")
             .then(res => {
                 if (!res.data.Token) {
                     localStorage.clear()
@@ -49,7 +49,7 @@ export const CreatePost = () => {
             formdata.append('postcaption', postcaption)
             formdata.append('public_id', public_id)
 
-            axios.post("https://postazon-mern.onrender.com/createpost", formdata)
+            axios.post("https://postazonbackend.onrender.com/createpost", formdata)
                 .then(res => {
                     toast(res.data.msg)
                     nav(`/home/${userid}`)

@@ -14,7 +14,7 @@ export const ViewProfiles = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = () => {
 
-        axios.get("https://postazon-mern.onrender.com/")
+        axios.get("https://postazonbackend.onrender.com")
             .then(res => {
                 if (!res.data.Token) {
                     localStorage.clear()
