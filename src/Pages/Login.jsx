@@ -17,7 +17,7 @@ export const Login = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = () => {
 
-        axios.get("https://postazon-mern.onrender.com/")
+        axios.get("https://postazon-mern.onrender.com")
             .then(res => {
                 if (res.data.Token) {
                     nav(`/home/${localStorage.getItem('Id')}`)
@@ -39,13 +39,13 @@ export const Login = () => {
 
         if (useremail.trim() === "" || userpassword.trim() === "") toast("Missing fields")
         else {
-            axios.post("http://localhost:9000/login", { useremail, userpassword })
+            axios.post("https://postazon-mern.onrender.com/login", { useremail, userpassword })
                 .then(res => {
                     if (res.data.LoggedIn) {
                         localStorage.setItem('Id', res.data.LoggedInUser._id)
                         localStorage.setItem('Name', res.data.LoggedInUser.name)
 
-                        axios.get("http://localhost:9000/allusers")
+                        axios.get("https://postazon-mern.onrender.com/allusers")
                             .then(res2 => {
                                 nav(`/home/${res.data.LoggedInUser._id}`)
 

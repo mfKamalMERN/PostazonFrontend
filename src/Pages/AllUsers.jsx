@@ -15,7 +15,7 @@ const AllUsers = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = () => {
 
-        axios.get("http://localhost:9000/allusers")
+        axios.get("https://postazon-mern.onrender.com/allusers")
             .then(async res => {
                 if (!res.data.Token) {
                     localStorage.clear()
@@ -48,7 +48,7 @@ const AllUsers = () => {
     })
 
     const clkFollow = (id) => {
-        axios.put(`http://localhost:9000/followuser/${id}`)
+        axios.put(`https://postazon-mern.onrender.com/followuser/${id}`)
             .then(res => toast(res.data.msg))
             .catch(er => console.log(er))
     }

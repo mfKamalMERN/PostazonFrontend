@@ -15,7 +15,7 @@ export const Register = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = () => {
 
-        axios.get("http://localhost:9000/")
+        axios.get("https://postazon-mern.onrender.com")
             .then(res => {
                 if (res.data.Token) {
                     nav(`/home/${localStorage.getItem('Id')}`)
@@ -36,7 +36,7 @@ export const Register = () => {
 
         else {
             try {
-                const res = await axios.post("http://localhost:9000/register", { username, useremail, userpassword })
+                const res = await axios.post("https://postazon-mern.onrender.com/register", { username, useremail, userpassword })
                 if (res.data.AlreadyRegistered) toast(res.data.msg)
                 else {
                     toast(res.data.msg)

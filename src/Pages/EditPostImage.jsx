@@ -11,7 +11,7 @@ export const EditPostImage = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = () => {
 
-        axios.get("http://localhost:9000/")
+        axios.get("https://postazon-mern.onrender.com")
             .then(res => {
                 if (!res.data.Token) {
                     localStorage.clear()
@@ -35,7 +35,7 @@ export const EditPostImage = () => {
             formdata.append('file', file)
             formdata.append('userid', localStorage.getItem('Id'))
 
-            axios.put(`http://localhost:9000/uploadandeditpostimage/${postid}`, formdata)
+            axios.put(`https://postazon-mern.onrender.com/uploadandeditpostimage/${postid}`, formdata)
                 .then(res => {
                     toast(res.data.msg)
                     nav(`/home/${localStorage.getItem('Id')}`)

@@ -22,7 +22,7 @@ export const ViewProfile = () => {
 
     const tokenChecker = () => {
 
-        axios.get("http://localhost:9000/allusers")
+        axios.get("https://postazon-mern.onrender.com/allusers")
             .then(res => {
 
                 if (!res.data.Token) {
@@ -77,9 +77,9 @@ export const ViewProfile = () => {
     const clkFollow = (ID) => {
         setShowfollower(!showfollower)
         setShowfollowing(!showfollowing)
-        axios.put(`http://localhost:9000/followuser/${ID}`)
+        axios.put(`https://postazon-mern.onrender.com/followuser/${ID}`)
             .then(res => {
-                axios.get(`http://localhost:9000/allusers`)
+                axios.get(`https://postazon-mern.onrender.com/allusers`)
                     .then(res2 => {
                         setAlluser(res2.data.AllUsers)
                         // localStorage.setItem('Users', JSON.stringify(res2.data.AllUsers))
@@ -96,7 +96,7 @@ export const ViewProfile = () => {
         const formdata = new FormData()
         formdata.append('filedp', file)
 
-        axios.put(`http://localhost:9000/uploaddp/${localStorage.getItem('Id')}`, formdata)
+        axios.put(`https://postazon-mern.onrender.com/uploaddp/${localStorage.getItem('Id')}`, formdata)
             .then(res => {
                 setPath(res.data.Path)
                 localStorage.setItem('Path', path)
@@ -114,7 +114,7 @@ export const ViewProfile = () => {
 
     const clkMyposts = async (myid) => {
         try {
-            const response = await axios.get(`http://localhost:9000/myposts/${myid}`)
+            const response = await axios.get(`https://postazon-mern.onrender.com/myposts/${myid}`)
             const myposts = response.data.MyPosts
             localStorage.setItem('Userposts', JSON.stringify(myposts))
             nav(`/home/${myid}/${myposts}`)
