@@ -17,7 +17,7 @@ export const Login = () => {
     axios.defaults.withCredentials = true
     const tokenChecker = () => {
 
-        axios.get("https://postazon-mern.onrender.com")
+        axios.get("https://postazon-mern.onrender.com/allusers")
             .then(res => {
                 if (res.data.Token) {
                     nav(`/home/${localStorage.getItem('Id')}`)
